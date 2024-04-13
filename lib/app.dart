@@ -1,4 +1,4 @@
-import 'package:day_5_hw/Day_5_hw/view/scoreUi.dart';
+import 'package:day_5_hw/Day_6/homework/message.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -8,7 +8,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ScoreUi(),
+      theme: ThemeData(fontFamily: 'Poppins'),
+      home: MessageScreen(),
     );
   }
 }
