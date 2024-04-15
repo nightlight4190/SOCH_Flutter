@@ -7,6 +7,7 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     String imgUrl = "https://picsum.photos/200/300?random=";
     Color primaryColor = Color.fromARGB(255, 59, 33, 229);
+    Color secondaryColor = Color.fromARGB(255, 233, 237, 245);
 
     return Scaffold(
       body: Padding(
@@ -85,7 +86,8 @@ class ChatScreen extends StatelessWidget {
                       height: 26,
                       width: 60,
                       text: 'Hi Alan ',
-                      radius: 20,
+                      radius: 14,
+                      color: secondaryColor,
                     ),
                     SizedBox(
                       height: 10,
@@ -95,6 +97,7 @@ class ChatScreen extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.52,
                       text: 'I am Jason, here to help you find new friends',
                       radius: 10,
+                      color: secondaryColor,
                     ),
                     SizedBox(
                       height: 10,
@@ -103,7 +106,7 @@ class ChatScreen extends StatelessWidget {
                       height: 28,
                       width: MediaQuery.of(context).size.width * 0.52,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 233, 237, 245),
+                        color: secondaryColor,
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(8),
                           topRight: Radius.circular(8),
@@ -123,7 +126,54 @@ class ChatScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    InterestContainer(primaryColor: primaryColor),
+                    InterestContainer(
+                      primaryColor: primaryColor,
+                      radius: 0,
+                      text: 'Travelling the world',
+                    ),
+                    InterestContainer(
+                      primaryColor: primaryColor,
+                      radius: 0,
+                      text: 'Photography',
+                    ),
+                    InterestContainer(
+                      primaryColor: primaryColor,
+                      radius: 8,
+                      text: 'Watching Movie',
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        right: 20,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            height: 26,
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            decoration: BoxDecoration(
+                              color: primaryColor,
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                            child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 7),
+                                child: Text(
+                                  'Photography',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -135,13 +185,16 @@ class ChatScreen extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class InterestContainer extends StatelessWidget {
   double radius;
+  String text;
 
-  const InterestContainer({
+  InterestContainer({
     super.key,
     required this.primaryColor,
     required this.radius,
+    required this.text,
   });
 
   final Color primaryColor;
@@ -149,15 +202,15 @@ class InterestContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 1.0),
+      padding: const EdgeInsets.only(bottom: 1.8),
       child: Container(
         height: 28,
         width: MediaQuery.of(context).size.width * 0.52,
         decoration: BoxDecoration(
           color: Color.fromARGB(255, 255, 255, 255),
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(radius),
-            topRight: Radius.circular(radius),
+            bottomLeft: Radius.circular(radius),
+            bottomRight: Radius.circular(radius),
           ),
         ),
         child: Padding(
@@ -166,7 +219,7 @@ class InterestContainer extends StatelessWidget {
             left: 12,
           ),
           child: Text(
-            'Travelling the world',
+            text,
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w500,
@@ -185,12 +238,14 @@ class chatContainer extends StatelessWidget {
   double height;
   double width;
   double radius;
+  Color? color;
   chatContainer({
     super.key,
     required this.height,
     required this.width,
     required this.text,
     required this.radius,
+    this.color,
   });
 
   @override
@@ -199,7 +254,7 @@ class chatContainer extends StatelessWidget {
       height: height,
       width: width,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 233, 237, 245),
+        color: color,
         borderRadius: BorderRadius.circular(radius),
       ),
       child: Center(
