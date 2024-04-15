@@ -122,8 +122,9 @@ class MessageScreen extends StatelessWidget {
                               radius: Radius.circular(50),
                               padding: EdgeInsets.all(25),
                               child: ClipRRect(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(40)),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(40),
+                                ),
                               ),
                             ),
                             Positioned(
