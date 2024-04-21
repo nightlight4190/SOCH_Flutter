@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -11,10 +9,10 @@ class DynamicPosition extends StatefulWidget {
 }
 
 class _DynamicPositionState extends State<DynamicPosition> {
-  double _cTop = 20;
-  double _cBottom = 20;
-  double _cLeft = 2;
-  double _cRight = 40;
+  double _cTop = -20;
+  double _cBottom = 80;
+  double _cLeft = -40;
+  double _cRight = 200;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +28,7 @@ class _DynamicPositionState extends State<DynamicPosition> {
           Container(
             height: MediaQuery.of(context).size.height * 0.6,
             width: MediaQuery.of(context).size.width,
-            color: Colors.teal,
+            color: Color.fromARGB(255, 230, 239, 238),
             child: Stack(
               children: [
                 Positioned(
@@ -41,7 +39,7 @@ class _DynamicPositionState extends State<DynamicPosition> {
                   child: Icon(
                     Icons.circle,
                     size: 40,
-                    color: Colors.black,
+                    color: Colors.teal,
                   ),
                 ),
               ],
@@ -53,55 +51,74 @@ class _DynamicPositionState extends State<DynamicPosition> {
             // color: Colors.amber,
             child: Stack(
               children: [
-                Positioned(
-                  right: 10,
-                  left: 10,
-                  top: 40,
+                Align(
+                  alignment: Alignment.center,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          _cTop = _cTop - 100;
+                          setState(() {});
+                        },
                         icon: Icon(
                           Icons.arrow_upward,
+                          color: Colors.teal,
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          _cBottom = 40;
+                          _cLeft = 40;
+                          _cRight = 40;
+                          _cTop = 40;
+                          setState(() {});
+                        },
                         icon: Icon(
                           Icons.circle,
+                          color: Colors.teal,
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          _cBottom = _cBottom - 100;
+                          setState(() {});
+                        },
                         icon: Icon(
                           Icons.arrow_downward,
+                          color: Colors.teal,
                         ),
                       ),
                     ],
                   ),
                 ),
-                Positioned(
-                  top: 35,
-                  // right: 40,
-                  left: 140,
-                  bottom: 60,
+                Align(
+                  alignment: Alignment.center,
                   child: Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          _cLeft = _cLeft - 100;
+                          setState(() {});
+                        },
                         icon: Icon(
                           Icons.arrow_back,
+                          color: Colors.teal,
                         ),
                       ),
                       SizedBox(
                         width: 40,
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          _cRight = _cRight - 100;
+                          setState(() {});
+                        },
                         icon: Icon(
                           Icons.arrow_forward,
+                          color: Colors.teal,
                         ),
                       ),
                     ],
@@ -109,91 +126,9 @@ class _DynamicPositionState extends State<DynamicPosition> {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
   }
 }
-
-// class MyHomePage extends StatefulWidget {
-//   @override
-//   _MyHomePageState createState() => _MyHomePageState();
-// }
-
-// class _MyHomePageState extends State<MyHomePage> {
-//   double _circlePositionX = 0.0;
-//   double _circlePositionY = 0.0;
-
-//   void _moveCircle(Direction direction) {
-//     setState(() {
-//       switch (direction) {
-//         case Direction.left:
-//           _circlePositionX -= 10;
-//           break;
-//         case Direction.right:
-//           _circlePositionX += 10;
-//           break;
-//         case Direction.up:
-//           _circlePositionY -= 10;
-//           break;
-//         case Direction.down:
-//           _circlePositionY += 10;
-//           break;
-//       }
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Move Circle'),
-//       ),
-//       body: Stack(
-//         children: [
-//           Positioned(
-//             left: _circlePositionX,
-//             top: _circlePositionY,
-//             child: Container(
-//               width: 50,
-//               height: 50,
-//               decoration: BoxDecoration(
-//                 color: Colors.blue,
-//                 shape: BoxShape.circle,
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-//       bottomNavigationBar: Row(
-//         mainAxisAlignment: MainAxisAlignment.spaceAround,
-//         children: [
-//           IconButton(
-//             onPressed: () => _moveCircle(Direction.left),
-//             icon: Icon(Icons.arrow_back),
-//           ),
-//           IconButton(
-//             onPressed: () => _moveCircle(Direction.up),
-//             icon: Icon(Icons.arrow_upward),
-//           ),
-//           IconButton(
-//             onPressed: () => _moveCircle(Direction.down),
-//             icon: Icon(Icons.arrow_downward),
-//           ),
-//           IconButton(
-//             onPressed: () => _moveCircle(Direction.right),
-//             icon: Icon(Icons.arrow_forward),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
-// enum Direction {
-//   left,
-//   right,
-//   up,
-//   down,
-// }
