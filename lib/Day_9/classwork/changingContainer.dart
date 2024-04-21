@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Stateful extends StatefulWidget {
-  const Stateful({super.key});
+class ChangingContainer extends StatefulWidget {
+  const ChangingContainer({super.key});
 
   @override
-  State<Stateful> createState() => _StatefulState();
+  State<ChangingContainer> createState() => _ChangingContainerState();
 }
 
-class _StatefulState extends State<Stateful> {
+class _ChangingContainerState extends State<ChangingContainer> {
   int noOfballs = 15;
   double circleSize = 50;
   bool isBgGreen = true;
