@@ -9,7 +9,7 @@ class DynamicPosition extends StatefulWidget {
 }
 
 class _DynamicPositionState extends State<DynamicPosition> {
-  double _cTop = -20;
+  double _cTop = -10;
   double _cBottom = 80;
   double _cLeft = -40;
   double _cRight = 200;
