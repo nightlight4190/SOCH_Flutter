@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class PersonDetail extends StatelessWidget {
+class PersonDetail extends StatefulWidget {
   String Name, ImageUrl, Bio, Gender;
-  // String Hobbies;
   int Age;
   PersonDetail({
     super.key,
@@ -16,11 +15,16 @@ class PersonDetail extends StatelessWidget {
   });
 
   @override
+  State<PersonDetail> createState() => _PersonDetailState();
+}
+
+class _PersonDetailState extends State<PersonDetail> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          '${Name} Details',
+          '${widget.Name} Details',
           style: TextStyle(
             fontWeight: FontWeight.w800,
           ),
@@ -28,19 +32,20 @@ class PersonDetail extends StatelessWidget {
         foregroundColor: Colors.teal,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 40),
             child: CircleAvatar(
               radius: 80,
-              backgroundImage: NetworkImage(ImageUrl),
+              backgroundImage: NetworkImage(widget.ImageUrl),
             ),
           ),
           SizedBox(
             height: 20,
           ),
           Text(
-            Name,
+            widget.Name,
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
@@ -52,7 +57,7 @@ class PersonDetail extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(right: 12, left: 12),
             child: Text(
-              Bio,
+              widget.Bio,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.w500,
@@ -75,14 +80,14 @@ class PersonDetail extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '${Age.toString()} Years old',
+                  '${widget.Age.toString()} Years old',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 16,
                   ),
                 ),
                 Text(
-                  Gender.toString(),
+                  widget.Gender.toString(),
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 16,

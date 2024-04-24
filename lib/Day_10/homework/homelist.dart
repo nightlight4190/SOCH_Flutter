@@ -47,7 +47,11 @@ class PersonList extends StatelessWidget {
                   topRight: Radius.circular(12),
                   bottomLeft: Radius.circular(12),
                 ),
-                border: Border.all(),
+                border: Border.all(
+                    width: 2,
+                    color: personData[index]['gender'] == 'male'
+                        ? Colors.blue
+                        : Colors.pink),
               ),
               child: Row(
                 children: [
